@@ -1,0 +1,142 @@
+<ion-view view-title="InAppBrowser">
+    <ion-content padding="true">
+
+        <div>
+            <h2>Options</h2>
+
+            <div class="row">
+                <div class="col">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Content
+                        </div>
+                        <select ng-model="contentType" ng-options="contentType.name for contentType in contentTypeData" ng-change="updateContentType(contentType)">
+                        </select>
+                    </label>
+                </div>
+                <div class="col">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Target
+                        </div>
+                        <select ng-model="target" ng-options="target.name for target in targetData" ng-change="updateTarget(target)">
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <a href="#" target="_system" class="button button-block" ng-click="open($event)">OPEN</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!--
+                   <div>
+            <h2>Output</h2>
+        </div>
+-->
+        <!--
+        <h2>Options</h2>
+
+        <div class="row">
+            <div class="col col-25">
+                <div class="card">
+                    <div class="item item-divider">
+                        Content Type
+                    </div>
+                    <div class="item item-input item-select" style="min-height: 50px;">
+                        <select ng-model="contentType" ng-options="contentType.name for contentType in contentTypeData" ng-change="updateContentType(contentType)" style="max-width: 100%;">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-20">
+                <div class="card">
+                    <div class="item item-divider">
+                        Target
+                    </div>
+                    <div class="item item-input item-select" style="min-height: 50px;">
+                        <select ng-model="target" ng-options="target.name for target in targetData" style="max-width: 100%;" ng-change="updateTarget(target)">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-25">
+                <div class="card">
+                    <div class="item item-divider">
+                        Transition Style
+                    </div>
+                    <div class="item item-input item-select" style="min-height: 50px;">
+                        <select ng-model="transitionStyle" ng-options="transitionStyle.name for transitionStyle in transitionStyleData" ng-change="updateTransitionStyle(transitionStyle)" style="max-width: 100%;">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-30">
+                <div class="card">
+                    <div class="item item-divider">
+                        Presentation Style
+                    </div>
+                    <div class="item item-input item-select" style="min-height: 50px;">
+                        <select ng-model="presentationStyle" ng-options="presentationStyle.name for presentationStyle in presentationStyleData" ng-change="updatePresentationStyle(presentationStyle)" style="max-width: 100%;">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-25">
+                <div class="card">
+                    <div class="item item-divider">
+                        Location Bar
+                    </div>
+                    <div class="item" style="padding: 8px 8px 9px 8px;">
+                        <label class="toggle">
+                            <input type="checkbox" ng-model="locationBar" ng-change="updateLocationBar(locationBar)" ng-true-value="'yes'" ng-false-value="'no'">
+                            <div class="track">‚
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-25">
+                <div class="card">
+                    <div class="item item-divider">
+                        Toolbar Position
+                    </div>
+                    <div class="item item-input item-select" style="min-height: 50px;">
+                        <select ng-model="toolbarPosition" ng-options="toolbarPosition.name for toolbarPosition in toolbarPositionData" ng-change="updateToolbarPosition(toolbarPosition)" style="max-width: 100%;">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="item item-divider">
+                        Error Handling
+                    </div>
+                    <div class="item item-text-wrap">
+                        <a href="1-cordova/c1-inappbrowser/error.html" data-options="location=yes,presentationstyle=formsheet" target="_blank" class="button button-block button-outline button-assertive" ng-click="click($event)">HTML</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="#" target="_system" class="button button-block" ng-click="open($event)">OPEN</a>
+            </div>
+        </div>
+
+        <h2>Output</h2>
+        <div id="output-wrapper" class="bp-scroll" style="height: 336px;">
+            <pre id="output"></pre>
+        </div>
+
+    -->
+
+    </ion-content>
+</ion-view>
