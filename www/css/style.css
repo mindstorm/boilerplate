@@ -1,1 +1,56 @@
-/* Empty. Add your own CSS if you like */
+/* IONIC */
+
+.col-30 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 30%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 30%;
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+
+.item-toggle {
+    padding-top: 13px;
+    padding-bottom: 14px;
+}
+
+.item-toggle .toggle {
+    top: 8px;
+}
+
+
+/* CONTAINER */
+
+.options-container {
+    height: calc(50vh - 20px - 44px - 21px);
+}
+
+.output-container {
+    height: calc(50vh - 20px);
+}
+
+
+/* OUTPUT */
+
+.output-card {
+    height: 100%;
+}
+
+.output-card .item-text-wrap {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100% - 32px);
+    -webkit-overflow-scrolling: touch;
+}
+
+.output p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.output-button {
+    float: right;
+    color: #000;
+}
