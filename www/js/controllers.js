@@ -1,6 +1,6 @@
 /* global angular, window, cordova, ionic, jQuery */
 
-angular.module('starter.controllers', [])
+angular.module('App.controllers', [])
 
 .controller("MainCtrl", function ($scope) {
     $scope.output = "";

@@ -1,27 +1,33 @@
+/* global process */
+
 // Include gulp
 var gulp = require("gulp");
 
 // Include Plugins
 var gutil = require("gulp-util");
 var bower = require("bower");
-var concat = require("gulp-concat");
+//var concat = require("gulp-concat");
 var sass = require("gulp-sass");
 var minifyCss = require("gulp-minify-css");
 var rename = require("gulp-rename");
+var uglify = require("gulp-uglify");
+var templateCache = require("gulp-angular-templatecache");
 var sh = require("shelljs");
 
 // Source Paths
 var srcPaths = {
-    styles: ["./_dev/styles/**/*.scss"]
+    styles: ["./_dev/styles/**/*.scss"],
+    templates: ["./_dev/templates/**/*.html"]
 };
 
 // Distribution Paths
 var distPaths = {
-    styles: "./www/css/"
+    styles: "./www/css/",
+    templates: "./www/js/"
 };
 
 // Defaut Task
-gulp.task("default", ["sass"]);
+gulp.task("default", ["sass", "templates"]);
 
 // Compile SASS
 gulp.task("sass", function (done) {
@@ -42,11 +48,28 @@ gulp.task("sass", function (done) {
         .on("end", done);
 });
 
+// Compile templates.
+gulp.task("templates", function (done) {
+    "use strict";
+
+    gulp.src(srcPaths.templates)
+        .pipe(templateCache("app.templates.min.js", {
+            module: "App",
+            base: ""
+        }))
+        .pipe(uglify({
+            mangle: false
+        }))
+        .pipe(gulp.dest(distPaths.templates))
+        .on("end", done);
+});
+
 // Watcher Task
 gulp.task("watch", function () {
     "use strict";
 
     gulp.watch(srcPaths.styles, ["sass"]);
+    gulp.watch(srcPaths.templates, ["templates"]);
 });
 
 gulp.task("install", ["git-check"], function () {
