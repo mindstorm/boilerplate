@@ -9,14 +9,14 @@ app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $u
         .state("app", {
             url: "/app",
             abstract: true,
-            templateUrl: "menu.html",
+            templateUrl: "app/Menu.html",
             controller: "MainCtrl"
         })
         .state("app.home", {
             url: "/home",
             views: {
                 "menuContent": {
-                    templateUrl: "Home.html",
+                    templateUrl: "app/Home.html",
                     controller: "HomeCtrl"
                 }
             }
@@ -25,11 +25,20 @@ app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $u
             url: "/cordova",
             abstract: "true",
         })
+        .state("app.cordova.device", {
+            url: "/device",
+            views: {
+                "menuContent@app": {
+                    templateUrl: "cordova/device/Device.html",
+                    controller: "DeviceCtrl"
+                }
+            }
+        })
         .state("app.cordova.inappbrowser", {
             url: "/inappbrowser",
             views: {
                 "menuContent@app": {
-                    templateUrl: "cordova/InAppBrowser.html",
+                    templateUrl: "cordova/inappbrowser/InAppBrowser.html",
                     controller: "InAppBrowserCtrl"
                 }
             }

@@ -1,5 +1,5 @@
 /*
- * InAppBrowser Controller
+ * Cordova InAppBrowser Controller
  ****************************************************/
 
 app.controller("InAppBrowserCtrl", function ($scope) {
