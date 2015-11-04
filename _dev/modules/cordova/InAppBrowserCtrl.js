@@ -1,44 +1,8 @@
-/* global angular, window, cordova, ionic, jQuery */
+/*
+ * InAppBrowser Controller
+ ****************************************************/
 
-angular.module('App.controllers', [])
-
-.controller("MainCtrl", function ($scope) {
-    $scope.output = "";
-
-    // OUTPUT
-    $scope.log = function (text) {
-
-        var currentdate = new Date();
-        var datetime = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-
-        $scope.$apply(function () {
-            $scope.output += "<p>[" + datetime + "] " + text;
-        });
-    };
-
-    // CLEAR
-    $scope.clear = function (e) {
-        e.preventDefault();
-        $scope.output = "";
-        return false;
-    };
-})
-
-.controller("HomeCtrl", function ($scope) {
-    "use strict";
-
-    $scope.version = {
-        "cordova": (window.cordova) ? cordova.version : "n/a",
-        "ionic": (window.ionic) ? ionic.version : "n/a",
-        "angular": (window.angular) ? angular.version.full : "n/a",
-        "jquery": window.jQuery ? jQuery.fn.jquery : "n/a",
-        "app": (window.apputils) ? apputils.info.bundleVersion : "n/a",
-        "apputils": (window.apputils) ? apputils.version : "n/a"
-    };
-
-})
-
-.controller("InAppBrowserCtrl", function ($scope) {
+app.controller("InAppBrowserCtrl", function ($scope) {
     "use strict";
 
     // CONTENTTYPE
@@ -106,13 +70,13 @@ angular.module('App.controllers', [])
     };
 
     // LOCATION BAR
-    $scope.locationBar = 'no';
+    $scope.locationBar = "no";
     $scope.updateLocationBar = function (item) {
         $scope.locationBar = item;
     };
 
     // TOOL BAR
-    $scope.toolBar = 'yes';
+    $scope.toolBar = "yes";
     $scope.updateToolBar = function (item) {
         $scope.toolBar = item;
     };

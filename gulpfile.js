@@ -6,7 +6,7 @@ var gulp = require("gulp");
 // Include Plugins
 var gutil = require("gulp-util");
 var bower = require("bower");
-//var concat = require("gulp-concat");
+var concat = require("gulp-concat");
 var sass = require("gulp-sass");
 var minifyCss = require("gulp-minify-css");
 var rename = require("gulp-rename");
@@ -17,20 +17,26 @@ var sh = require("shelljs");
 // Source Paths
 var srcPaths = {
     styles: ["./_dev/styles/**/*.scss"],
-    templates: ["./_dev/templates/**/*.html"]
+    scripts: [
+        "./_dev/scripts/app.module.js",
+        "./_dev/scripts/app.routes.js",
+        "./_dev/modules/**/*.js"
+    ],
+    templates: ["./_dev/modules/**/*.html"]
 };
 
 // Distribution Paths
 var distPaths = {
     styles: "./www/css/",
+    scripts: "./www/js/",
     templates: "./www/js/"
 };
 
 // Defaut Task
-gulp.task("default", ["sass", "templates"]);
+gulp.task("default", ["styles", "scripts", "templates"]);
 
-// Compile SASS
-gulp.task("sass", function (done) {
+// Compile and minify styles.
+gulp.task("styles", function (done) {
     "use strict";
 
     gulp.src("./_dev/styles/ionic.app.scss")
@@ -48,7 +54,20 @@ gulp.task("sass", function (done) {
         .on("end", done);
 });
 
-// Compile templates.
+// Concat and minify scripts.
+gulp.task("scripts", function (done) {
+    "use strict";
+
+    gulp.src(srcPaths.scripts)
+        .pipe(concat("app.bundle.min.js"))
+        .pipe(uglify({
+            mangle: false
+        }))
+        .pipe(gulp.dest(distPaths.scripts))
+        .on("end", done);
+});
+
+// Compile and minify templates.
 gulp.task("templates", function (done) {
     "use strict";
 
@@ -68,13 +87,14 @@ gulp.task("templates", function (done) {
 gulp.task("watch", function () {
     "use strict";
 
-    gulp.watch(srcPaths.styles, ["sass"]);
+    gulp.watch(srcPaths.styles, ["styles"]);
+    gulp.watch(srcPaths.scripts, ["scripts"]);
     gulp.watch(srcPaths.templates, ["templates"]);
 });
 
 gulp.task("install", ["git-check"], function () {
     "use strict";
-    
+
     return bower.commands.install()
         .on("log", function (data) {
             gutil.log("bower", gutil.colors.cyan(data.id), data.message);
@@ -83,7 +103,7 @@ gulp.task("install", ["git-check"], function () {
 
 gulp.task("git-check", function (done) {
     "use strict";
-    
+
     if (!sh.which("git")) {
         console.log(
             "  " + gutil.colors.red("Git is not installed."),
