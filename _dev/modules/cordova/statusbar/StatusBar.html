@@ -1,0 +1,47 @@
+<ion-view view-title="cordova | StatusBar">
+    <ion-content padding="true" scroll="false">
+
+        <div class="options-container">
+            <div class="row">
+                <div class="col">
+                    <h3>Options</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="item item-toggle">
+                        Visability
+                        <label class="toggle">
+                            <input type="checkbox" ng-model="visability" ng-change="updateVisability(visability)" ng-true-value="true" ng-false-value="false" ng-disabled="disabled">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Style
+                        </div>
+                        <select ng-model="styleType" ng-options="styleType.name for styleType in styleTypeData" ng-change="updateStyleType(styleType)" ng-disabled="disabled">
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="output-container">
+            <div class="card output-card">
+                <div class="item item-divider">
+                    <span>OUTPUT</span>
+                    <a href="#" target="_system" class="output-button icon ion-ios-trash-outline" ng-click="clear($event)"></a>
+                </div>
+                <div class="item item-text-wrap">
+                    <code class="output" ng-bind-html="output"></code>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

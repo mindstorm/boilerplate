@@ -42,7 +42,17 @@ app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $u
                     controller: "InAppBrowserCtrl"
                 }
             }
-        });
+        })
+        .state("app.cordova.statusbar", {
+            url: "/statusbar",
+            views: {
+                "menuContent@app": {
+                    templateUrl: "cordova/statusbar/StatusBar.html",
+                    controller: "StatusBarCtrl"
+                }
+            }
+        })
+    ;
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise("/app/home");
