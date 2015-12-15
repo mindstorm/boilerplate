@@ -26,6 +26,6 @@
     "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [
-    "ios"
+    "ios@4.0.0"
   ]
 }
